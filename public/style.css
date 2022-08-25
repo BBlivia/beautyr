@@ -2835,7 +2835,7 @@ html, body{
 */
 .ba{
   /* The image used */
-  background-image: url("../imgs/one.jpeg");
+  background: linear-gradient(0.25turn, #d796d9, #bfa59e, #d55d77);
  
   
   /* Add the blur effect 
@@ -2873,15 +2873,23 @@ html, body{
   font-size: xx-large;
 }
 .the-button{
-  background: linear-gradient(rgb(42, 110, 133), rgb(185, 181, 181), rgb(107, 135, 145));
+  background: linear-gradient(rgb(0, 5, 7), rgb(0, 0, 0), rgb(0, 0, 0));
 }
 .but{
   border: 4px solid white;
   margin-left: 15%;
-  background: linear-gradient(rgb(42, 110, 133), rgb(185, 181, 181), rgb(107, 135, 145));
+  background: linear-gradient(rgb(0, 6, 7), rgb(0, 0, 0), rgb(0, 0, 0));
   font-weight: bolder;
  
 }
+.the-button:hover {
+  transform: scale(0.98);
+}
+
+.but:hover {
+  transform: scale(0.98);
+}
+
 
 
 .b{
@@ -2890,4 +2898,9 @@ html, body{
 
 .tc{
   margin-top: -5%
+}
+
+.post-like-dislike{
+  border: 2px solid red;
+  height: 100px;
 }

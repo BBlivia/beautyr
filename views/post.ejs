@@ -58,7 +58,7 @@
     </div>
     <img src="<%= post.image%>" />
 
-    <div class="flex items-center justify-between mx-4 mt-3 mb-2">
+    <div class="flex items-center gap-5 mx-4 mt-3 mb-2">
       <div class="flex gap-5">
         
         <form
@@ -76,7 +76,7 @@
   </div>
 
   <%if(post.user == user.id){ %>
-    <form 
+    <form class="ml-3"
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
           class="col-3 "
@@ -111,6 +111,7 @@
           <span class="font-medium mr-2"> <%= comments[i].createdByUsername%> </span>
           <span> <%= comments[i].comment%> </span> 
           </div>
+       
             <form 
                   action="/comment/likeComment/<%=post._id%>/<%= comments[i]._id %>?_method=PUT"
                   method="POST"
@@ -130,6 +131,7 @@
                   <button type="submit" class="">delete</button>
                 </form>
                 <%}%>
+              
         </li>
       <% } %>
    

@@ -34,6 +34,7 @@ module.exports = {
       for(i in posts){
         var user = await User.findById(posts[i].user)
         users.push(user.userName)
+       console.log(users)
       }
       res.render("feed.ejs", { posts: posts, userName: users,user: req.user });
     } catch (err) {
@@ -77,42 +78,6 @@ module.exports = {
   },
 
 
-  // likePost: async (req, res)=>{
-  //   var liked = false
-  //   try{
-  //     var post = await Post.findById({_id:req.params.id})
-  //     liked = (post.likes.includes(req.user.id))
-  //   } catch(err){
-  //   }
-  //   //if already liked we will remove user from likes array
-  //   if(liked){
-  //     try{
-  //       await Post.findOneAndUpdate({_id:req.params.id},
-  //         {
-  //           $pull : {'likes' : req.user.id}
-  //         })
-          
-  //         console.log('Removed user from likes array')
-  //         res.redirect('back')
-  //       }catch(err){
-  //         console.log(err)
-  //       }
-  //     }
-  //     //else add user to like array
-  //     else{
-  //       try{
-  //         await Post.findOneAndUpdate({_id:req.params.id},
-  //           {
-  //             $addToSet : {'likes' : req.user.id}
-  //           })
-            
-  //           console.log('Added user to likes array')
-  //           res.redirect(`back`)
-  //       }catch(err){
-  //           console.log(err)
-  //       }
-  //     }
-  //   },
     
 
     
