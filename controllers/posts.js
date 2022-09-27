@@ -12,6 +12,14 @@ module.exports = {
       console.log(err);
     }
   },
+  gotoAccount: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id })
+      res.render("account.ejs", {  user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
@@ -22,8 +30,9 @@ module.exports = {
   },
   getPost: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
+      const post = await Post.findById(req.params.id)
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
+     
       res.render("post.ejs", { post: post, user: req.user, comments: comments });
     } catch (err) {
       console.log(err);
@@ -39,6 +48,8 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
+        serviceProvider:req.body.serviceProvider,
+        location:req.body.location,
         likes: 0,
         user: req.user.id,
       });
@@ -48,6 +59,18 @@ module.exports = {
       console.log(err);
     }
   },
+
+  /*getP: async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id)
+      const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
+     
+      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  */
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(

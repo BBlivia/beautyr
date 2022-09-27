@@ -1,14 +1,19 @@
 
 const Comment = require("../models/Comment");
+const User = require("../models/User");
 
 module.exports = {
 
   createComment: async (req, res) => {
     try {
-
+      const commentUser = await User.findById(req.user)
       await Comment.create({
         comment: req.body.comment,
         post: req.params.id,
+        createdByUsername: commentUser.userName,
+        createdById: req.user.id
+        //comment: req.params.commentid
+        
         // likes and user
       });
       console.log("Comment has been added!");
@@ -17,7 +22,7 @@ module.exports = {
       console.log(err);
     }
   },
-
+  
   likeComment: async (req, res) => {
     try {
       await Comment.updateOne(
@@ -33,6 +38,7 @@ module.exports = {
     }
   },
 
+  
 
   deleteComment: async (req, res) => {
     try {

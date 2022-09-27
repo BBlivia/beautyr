@@ -13,6 +13,14 @@ const PostSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  serviceProvider:{
+    type:String,
+    require:true
+  },
+  location:{
+    type: String,
+    require: true
+  },
   caption: {
     type: String,
     required: true,
@@ -29,6 +37,15 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+ 
+})
+PostSchema.index({serviceProvider: 'text'});
+
+
+
+
+
+  
+
 
 module.exports = mongoose.model("Post", PostSchema);
