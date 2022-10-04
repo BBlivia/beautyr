@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const commentRoutes = require("./routes/comments");
+
 //const commentRoutes = require("./routes/comments");
   
 
@@ -63,6 +64,8 @@ app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
 
 //app.use("/comment", commentRoutes);
+
+
 
 
 //Server Running

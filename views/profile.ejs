@@ -1,54 +1,82 @@
 <%- include('partials/header') -%>
 
-
-<form action='/post/searchItem/' method="GET">
-  <input id="searchInput" type="text" placeholder="search stylist or artist by IG name" name="title">
-  <button type="submit" id="searchButton">SEARCH INFO</button>
+<!--
+<form class="d-flex" role="search" action="post/:title">
+  <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success text-white" style="border: 3px solid white;" 
+  action= "/post/title?_method=GET"
+  method="POST"
+  type="submit">Search</button>
 </form>
+-->
 
-<div class="container">
+
+<div >
+  <p><strong>User Name</strong>: <%= user.userName %>
+    
+    <img src="./assests/" alt="profile-pic" class="profile-img">
+  </p>
+  <!--
+  <p><strong>Email</strong>: <%= user.email %></p>
+  <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+  -->
+</div>
+
+<div class="bg-blue flex justify-end font-bold">
+<div class="row justify-content-center mt-5">
+  <a class="btn btn-outline btn-info ml-20 text-black font-bold" href="/feed">Return to Feed</a>
+</div>  
+<div class="row justify-content-center mt-5">
+  <a class="btn btn-outline btn-success ml-20 font-bold" href="/account">Edit Profile</a>
+</div>  
+
+
+</div>
+<div class="border-solid border-2 ">
   <div class="row mt-5">
       <div class="col-6">
-        <div class="input-container">
-          <div >
-              <p><strong>User Name</strong>: <%= user.userName %>
-                <img src="" alt="profile-pic" class="profile-img">
-              </p>
-              <p><strong>Email</strong>: <%= user.email %></p>
-              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
-          </div>
-          <div class="mt-5">
-            <h2>Add a post</h2>
+        <div >
+
+          <form method="POST" action="/post/search">
+            <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+          
+          <div class="ml-20">
+            <h2 class="text-xl font-sans font-bold">Add a Review</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
-                  <label for="title" class="form-label">Title</label>
-                  <input class="textarea textarea-info" type="text" class="form-control" id="title" name="title">
+                  <label for="title" class="form-label font-bold">Title:   </label>
+                  <input class="textarea textarea-info ml-28" type="text" class="form-control" id="title" name="title">
               </div>
               <div class="mb-3">
-                <label for="serviceProvider" class="form-label">Service</label>
-                <select name="serviceProvider" id="serviceProvider">
-                  <option value="Makeup">Makeup</option>
-                  <option value="Hair">Hair</option>
+                <label for="serviceProvider" class="form-label font-bold"> Name of Provider:</label>
+                <input class="textarea textarea-info ml-6" placeholder="IG Name"  name="serviceProvider">
+              </div>
+              <div class="mb-3">
+                <label for="serviceProvider" class="form-label font-bold">Service</label>
+                <select name="serviceProvider font-bold" id="serviceProvider">
+                  <option value="Makeup font-bold">Makeup</option>
+                  <option value="Hair font-bold">Hair</option>
                 </select>
               </div>
               <div class="mb-3">
-                <label for="location" class="form-label">Location: City, State</label>
-                <textarea class="textarea textarea-info" placeholder="Location"  name="location"></textarea>
+                <label for="location" class="form-label font-bold">Location: City, State</label>
+                <input class="textarea textarea-info ml-3" placeholder="Location"  name="location">
               </div>
               <div class="mb-3">
-                <label for="caption" class="form-label"> experience</label>
-                <textarea class="textarea textarea-info" placeholder="Bio"  name="caption"></textarea>
+                <label for="caption" class="form-label font-bold"> experience</label>
+                <textarea class="textarea textarea-info ml-20" placeholder="Bio"  name="caption"></textarea>
               </div>
               <div class="mb-3">
-                <label for="imgUpload" class="form-label">Image</label>
-                <input class="textarea textarea-info" type="file" class="form-control" id="imageUpload" name="file">
+                <label for="imgUpload" class="form-label font-bold">Image</label>
+                <input class="textarea textarea-info ml-28" type="file" class="form-control" id="imageUpload" name="file">
               </div>
-              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+              <button type="submit" class="btn btn-outline ml-40 font-bold" value="Upload">Add!</button>
             </form>
           </div>
       </div>
 
-
+        <!--
     </div>
       <div class="col-6">
         <ul class="row list-unstyled">
@@ -60,14 +88,13 @@
           </li>
         <% } %>
         </ul>
-        <div class="row justify-content-center mt-5">
-          <a class="btn " href="/feed">Return to Feed</a>
-        </div>  
-        <div class="row justify-content-center mt-5">
-          <a class="btn" href="/account">Edit Profile</a>
-        </div>  
-      </div>  
-    </div>
-  </div>
+      </div>
+         -->
+        
+    
+  
+</div>  
 </div>
+</div>
+
 <%- include('partials/footer') -%>

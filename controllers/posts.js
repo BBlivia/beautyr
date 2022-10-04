@@ -1,6 +1,9 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment"); //loading comment model
+const User = require("../models/User")
+const { response, request } = require("express");
+const { ObjectID } = require("mongodb");
 //add another controller for comments 
 
 module.exports = {
@@ -14,7 +17,10 @@ module.exports = {
   },
   gotoAccount: async (req, res) => {
     try {
+     
       const posts = await Post.find({ user: req.user.id })
+      
+
       res.render("account.ejs", {  user: req.user });
     } catch (err) {
       console.log(err);
@@ -48,7 +54,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        serviceProvider:req.body.serviceProvider,
+       
         location:req.body.location,
         likes: 0,
         user: req.user.id,
@@ -60,17 +66,8 @@ module.exports = {
     }
   },
 
-  /*getP: async (req, res) => {
-    try {
-      const post = await Post.findById(req.params.id)
-      const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
-     
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  */
+
+    
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
@@ -99,4 +96,17 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+
+  searchPost: async(req, res) =>{
+    try {
+      let searchTerm = req.body.searchTerm;
+      let posts = await Post.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
+     // res.json(post)
+     // console.log(post)
+      res.render("search.ejs", { title: "beauty review - Search", posts });
+    } catch (error) {
+      res.satus(500).send({message: error.message || "Error Occured" });
+    }
+  
+  }
 };

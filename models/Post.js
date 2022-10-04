@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+//const { db } = require("./Comment");
 
 const PostSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: "This field is required",
   },
   image: {
     type: String,
@@ -38,14 +39,9 @@ const PostSchema = new mongoose.Schema({
     default: Date.now,
   },
  
-})
-PostSchema.index({serviceProvider: 'text'});
+});
 
-
-
-
-
-  
+PostSchema.index({title: 'text' })
 
 
 module.exports = mongoose.model("Post", PostSchema);

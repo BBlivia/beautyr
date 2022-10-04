@@ -10,9 +10,15 @@
 */
 module.exports = {
  
-  content: ["./views/**/*.ejs"],
+  content: ['./views/*.ejs'],
   theme: {
     extend: {},
   },
-  plugins: [],
+
+  plugins: [require("daisyui")],
+
+
+  daisyui: {
+    themes: ["light"],
+  },
 }

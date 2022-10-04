@@ -1,23 +1,40 @@
 <%- include('partials/header') -%>
 
 
-
-
-<div class="container">
-  <div class="flex font-serif">
+<div class="max-w-sm w-full lg:max-w-full lg:flex">
+  
+  <div>
+    
     <div class="flex-none w-52 relative">
-      <h2 class="card-title"><%= post.title %></h2>
-      <img  class="absolute inset-0 w-full h-full object-cover rounded-lg" loading="lazy" src="<%= post.image%>" />
+      <div class="col-12"><h1><%= post.title %></h1></div>
+      
+      <img  class="w-full" loading="lazy" src="<%= post.image%>" >
       <div class="row justify-content-between">
         <form
           class="col-1"
           action="/post/likePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+        <div class="flex   space-x-0">
+        <button type="submit"> 
+
+          <div class="flex-none hidden px-2 mx-2 lg:flex">
+           
+            <div class="flex items-stretch">
+              <h3 class="inline"> <%= post.likes %></h3>
+              <%if(post.user == user.id){ %>
+              <a >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 mr-2 stroke-current">              
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>            
+                </svg>
+              </a>
+              </div>
+
+        </button>
+       
+          </div>
         </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
-        <%if(post.user == user.id){ %>
+        
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
@@ -28,31 +45,37 @@
         <%}%>
       </div>
     </div>
-    <div class="col-3 mt-5">
+    <!--<div class="col-3 mt-5">
       <p><%= post.caption %></p>
+    </div>-->
+    <div class="col-3 mt-5">
+      <p>Location:<%= post.location %></p>
     </div>
     <div class="col-3 mt-5">
-      <p><%= post.location %></p>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= post.serviceProvider %></p>
+      <p>Experience:<%= post.experience %></p>
     </div>
 
+    <div class="col-3 mt-5">
+      <p>Service:<%= post.serviceProvider %></p>
+    </div>
+    
+  
     <!-- Creating comment form -->
     <div class="mt-5">
-      <h2>Add a comment</h2>
+      <h2 class="text-3xl">Add a comment</h2>
       <form action="/comment/createComment/<%=post._id%>" method="POST">
         <div class="mb-3">
             <label for="comment" class="form-label">comment</label>
-            <input type="text" class="form-control" id="comment" name="comment">
+            <input type="text" class="form-control" id="comment" name="comment" placeholder="add comment">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
 
     <!-- Display comments using For Loop -->
-    
-    <ul>
+    <div class="dropdown">
+      <label tabindex="0" class="btn m-1"> View comments</label>
+    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
       <% for(var i=0; i<comments.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
           <!--Add user attribution-->
@@ -70,9 +93,10 @@
         </li>
       <% } %>
     </ul>
+  </div>
     <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <a class="link" href="/profile">Return to Profile</a>
+     
     </div>
   </div>
 </div>

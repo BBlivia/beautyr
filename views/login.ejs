@@ -10,29 +10,51 @@
       <div class="alert alert-info"><%= el.msg %></div>
       <% }) %> <% } %>
       <form action="/login" method="POST">
-        <div>
-          <label for="exampleInputEmail1" class="label"
-            
-            ><span class="label-text">Your Email</span></label
-          >
-          <input
-            type="email"
-            class="input input-bordered"
+        <div class="form-control my-2 ">
+          <label for="exampleInputEmail1" class="label">
+          </label>
+          <label class="input-group input-group-vertical">
+            <span>Email  </span>
+            <input
+            type="text"
+            class="input input-bordered input-md move-left input-lg"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="email"
+            placeholder="Please enter Email"
           />
+          </label>
+         
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="label">Password</label>
-          <input
+        
+
+
+        <div class="form-control my-2">
+          <label for="exampleInputPassword1"  class="label">
+          </label>
+          <label class="input-group input-group-vertical ">
+            <span>Password</span>
+            <input
             type="password"
-             class="input input-bordered"
+            class="input input-bordered input-lg "
             id="exampleInputPassword1"
             name="password"
+            placeholder="Please enter Password"
           />
+          </label>
+         
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+        <label for="exampleInputPassword1"  class="input-group"></label>
+
+
+        
+        <button type="submit" class="btn btn-outline">Submit</button>
+
+        
+        
       </form>
     </section>
   </div>
