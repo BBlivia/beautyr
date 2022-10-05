@@ -1,20 +1,5 @@
-# Install
+Hello, this the MVP for my app, "Beauty Review" 
+Users can upload pictures, and give a review on a stylist or makeup artist. I created this app because I love getting dolled up, but after getting scammed by Ig hair stylists I decided to create a space  that would allow clients to properly vet their stylists and makeup artists before dishing out money.
+In addition to leaving a review users can like and comment on reviews.
 
-`npm install`
-
----
-
-# Things to add
-
-- Create a `.env` file in config folder and add the following as `key = value`
-  - PORT = 2121 (can be any port example: 3000)
-  - DB_STRING = `your database URI`
-  - CLOUD_NAME = `your cloudinary cloud name`
-  - API_KEY = `your cloudinary api key`
-  - API_SECRET = `your cloudinary api secret`
-
----
-
-# Run
-
-`npm start`
+I learned alot, doing this project. I am so proud of myself for figuring out how to serch an index!
