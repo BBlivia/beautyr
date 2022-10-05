@@ -28,8 +28,13 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts: posts });
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean()
+      var users = []
+      for(i in posts){
+        var user = await User.findById(posts[i].user)
+        users.push(user.userName)
+      }
+      res.render("feed.ejs", { posts: posts, userName: users,user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +59,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-       
+        serviceProvider: req.body.serviceProvider,
         location:req.body.location,
         likes: 0,
         user: req.user.id,
@@ -66,22 +71,47 @@ module.exports = {
     }
   },
 
+/*
+  likePost: async (req, res)=>{
+    var liked = false
+    try{
+      var post = await Post.findById({_id:req.params.id})
+      liked = (post.likes.includes(req.user.id))
+    } catch(err){
+    }
+    //if already liked we will remove user from likes array
+    if(liked){
+      try{
+        await Post.findOneAndUpdate({_id:req.params.id},
+          {
+            $pull : {'likes' : req.user.id}
+          })
+          
+          console.log('Removed user from likes array')
+          res.redirect('back')
+        }catch(err){
+          console.log(err)
+        }
+      }
+      //else add user to like array
+      else{
+        try{
+          await Post.findOneAndUpdate({_id:req.params.id},
+            {
+              $addToSet : {'likes' : req.user.id}
+            })
+            
+            console.log('Added user to likes array')
+            res.redirect(`back`)
+        }catch(err){
+            console.log(err)
+        }
+      }
+    },
+    */
 
     
-  likePost: async (req, res) => {
-    try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  
   deletePost: async (req, res) => {
     try {
       // Find post by id
@@ -101,12 +131,28 @@ module.exports = {
     try {
       let searchTerm = req.body.searchTerm;
       let posts = await Post.find({ $text: { $search: searchTerm, $diacriticSensitive: true } });
-     // res.json(post)
-     // console.log(post)
-      res.render("search.ejs", { title: "beauty review - Search", posts });
+      //res.json(post)
+      console.log(posts)
+      res.render("search.ejs", { serviceProvider: "beauty review - Search", posts });
     } catch (error) {
-      res.satus(500).send({message: error.message || "Error Occured" });
+      //res.satus(500).send({message: error.message || "Error Occured" });
     }
   
-  }
+  },
+  likePost: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { likes: 1 },
+        }
+      );
+      console.log("Likes +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  }, 
 };
+
+

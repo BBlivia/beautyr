@@ -1,20 +1,12 @@
 <%- include('partials/header') -%>
 
-<!--
-<form class="d-flex" role="search" action="post/:title">
-  <input class="form-control me-2" type="search" name="title" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success text-white" style="border: 3px solid white;" 
-  action= "/post/title?_method=GET"
-  method="POST"
-  type="submit">Search</button>
-</form>
--->
+
 
 
 <div >
   <p><strong>User Name</strong>: <%= user.userName %>
     
-    <img src="./assests/" alt="profile-pic" class="profile-img">
+   
   </p>
   <!--
   <p><strong>Email</strong>: <%= user.email %></p>
@@ -23,12 +15,6 @@
 </div>
 
 <div class="bg-blue flex justify-end font-bold">
-<div class="row justify-content-center mt-5">
-  <a class="btn btn-outline btn-info ml-20 text-black font-bold" href="/feed">Return to Feed</a>
-</div>  
-<div class="row justify-content-center mt-5">
-  <a class="btn btn-outline btn-success ml-20 font-bold" href="/account">Edit Profile</a>
-</div>  
 
 
 </div>
@@ -37,21 +23,20 @@
       <div class="col-6">
         <div >
 
-          <form method="POST" action="/post/search">
-            <input type="search" name="searchTerm" class="form-control" placeholder="Search..." aria-label="Search">
-          </form>
+         
           
           <div class="ml-20">
             <h2 class="text-xl font-sans font-bold">Add a Review</h2>
             <form action="/post/createPost" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
-                  <label for="title" class="form-label font-bold">Title:   </label>
-                  <input class="textarea textarea-info ml-28" type="text" class="form-control" id="title" name="title">
+                <label for="serviceProvider" class="form-label font-bold"> Title:</label>
+                <input class="textarea textarea-info ml-6" placeholder=""  name="serviceProvider">
               </div>
               <div class="mb-3">
-                <label for="serviceProvider" class="form-label font-bold"> Name of Provider:</label>
-                <input class="textarea textarea-info ml-6" placeholder="IG Name"  name="serviceProvider">
+                  <label for="title" class="form-label font-bold">Name of Provider:   </label>
+                  <input class="textarea textarea-info ml-28" type="text" class="form-control" id="title" name="title" placeholder="IG Name">
               </div>
+              
               <div class="mb-3">
                 <label for="serviceProvider" class="form-label font-bold">Service</label>
                 <select name="serviceProvider font-bold" id="serviceProvider">
@@ -76,20 +61,7 @@
           </div>
       </div>
 
-        <!--
-    </div>
-      <div class="col-6">
-        <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="img-fluid" src="<%= posts[i].image%>">
-            </a>
-          </li>
-        <% } %>
-        </ul>
-      </div>
-         -->
+     
         
     
   

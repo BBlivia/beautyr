@@ -7,12 +7,17 @@
   plugins: [],
 }
 
-*/
+
 module.exports = {
  
   content: ['./views/*.ejs'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+       ' off-white': '#FDFBF7'
+
+      },
+    },
   },
 
   plugins: [require("daisyui")],
@@ -22,3 +27,4 @@ module.exports = {
     themes: ["light"],
   },
 }
+*/

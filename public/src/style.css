@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+boyd{
+    background-image: url("/views/assests/background.jpeg");
+}
 
 .move-it{
     margin-right: 20%;
