@@ -13,7 +13,6 @@ module.exports = {
         createdByUsername: commentUser.userName,
         createdById: req.user.id
         //comment: req.params.commentid
-        
         // likes and user
       });
       console.log("Comment has been added!");

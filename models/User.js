@@ -6,10 +6,7 @@ const UserSchema = new mongoose.Schema({    //add profile picture to user
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  image: {
-    type: String,
-    require: false,
-  },
+  
   
 });
 

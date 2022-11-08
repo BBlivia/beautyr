@@ -2,34 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-boyd{
-    background-image: url("/views/assests/background.jpeg");
-}
-
-.move-it{
-    margin-right: 20%;
-}
-
-.logo{
-    max-width: 6%;
-}
-
-.header-words{
-    display: block;
-    font-size: 5vh;
-    margin-top: 1%;
-}
-
-.header-lower{
-    font-size: 1vh;
-    margin-top: -9%;
-}
-
-.bg-black{
-    background-color: black;
-    color: white;
-}
-
 input {
     width: 400px;
 }
+
+

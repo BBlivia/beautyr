@@ -18,6 +18,10 @@ const PostSchema = new mongoose.Schema({
     type:String,
     require:true
   },
+  servie:{
+    type: String,
+    require:true
+  },
   location:{
     type: String,
     require: true
@@ -34,6 +38,7 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  
   createdAt: {
     type: Date,
     default: Date.now,

@@ -4,6 +4,7 @@ const Comment = require("../models/Comment"); //loading comment model
 const User = require("../models/User")
 const { response, request } = require("express");
 const { ObjectID } = require("mongodb");
+const { post } = require("../routes/comments");
 //add another controller for comments 
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
       const posts = await Post.find({ user: req.user.id })
       
 
-      res.render("account.ejs", {  user: req.user });
+      res.render("account.ejs", { posts:post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -45,6 +46,7 @@ module.exports = {
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
      
       res.render("post.ejs", { post: post, user: req.user, comments: comments });
+     
     } catch (err) {
       console.log(err);
     }
@@ -53,17 +55,20 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
+      const postUser = await User.findById(req.user)
       await Post.create({
         title: req.body.title,
         image: result.secure_url,
         cloudinaryId: result.public_id,
+        service :req.body.service,
         caption: req.body.caption,
         serviceProvider: req.body.serviceProvider,
         location:req.body.location,
         likes: 0,
         user: req.user.id,
+       //user: postUser
       });
+    
       console.log("Post has been added!");
       res.redirect("/profile");
     } catch (err) {
@@ -71,44 +76,44 @@ module.exports = {
     }
   },
 
-/*
-  likePost: async (req, res)=>{
-    var liked = false
-    try{
-      var post = await Post.findById({_id:req.params.id})
-      liked = (post.likes.includes(req.user.id))
-    } catch(err){
-    }
-    //if already liked we will remove user from likes array
-    if(liked){
-      try{
-        await Post.findOneAndUpdate({_id:req.params.id},
-          {
-            $pull : {'likes' : req.user.id}
-          })
+
+  // likePost: async (req, res)=>{
+  //   var liked = false
+  //   try{
+  //     var post = await Post.findById({_id:req.params.id})
+  //     liked = (post.likes.includes(req.user.id))
+  //   } catch(err){
+  //   }
+  //   //if already liked we will remove user from likes array
+  //   if(liked){
+  //     try{
+  //       await Post.findOneAndUpdate({_id:req.params.id},
+  //         {
+  //           $pull : {'likes' : req.user.id}
+  //         })
           
-          console.log('Removed user from likes array')
-          res.redirect('back')
-        }catch(err){
-          console.log(err)
-        }
-      }
-      //else add user to like array
-      else{
-        try{
-          await Post.findOneAndUpdate({_id:req.params.id},
-            {
-              $addToSet : {'likes' : req.user.id}
-            })
+  //         console.log('Removed user from likes array')
+  //         res.redirect('back')
+  //       }catch(err){
+  //         console.log(err)
+  //       }
+  //     }
+  //     //else add user to like array
+  //     else{
+  //       try{
+  //         await Post.findOneAndUpdate({_id:req.params.id},
+  //           {
+  //             $addToSet : {'likes' : req.user.id}
+  //           })
             
-            console.log('Added user to likes array')
-            res.redirect(`back`)
-        }catch(err){
-            console.log(err)
-        }
-      }
-    },
-    */
+  //           console.log('Added user to likes array')
+  //           res.redirect(`back`)
+  //       }catch(err){
+  //           console.log(err)
+  //       }
+  //     }
+  //   },
+    
 
     
   
@@ -139,7 +144,7 @@ module.exports = {
     }
   
   },
-  likePost: async (req, res) => {
+    likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
         { _id: req.params.id },
@@ -152,7 +157,7 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
-  }, 
+    }, 
+    
 };
-
 
