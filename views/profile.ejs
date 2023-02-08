@@ -2,10 +2,15 @@
 
 
 <p ><strong>Welcome</strong>: <%= user.userName.toUpperCase() %></p>
+
+
 <section class="bg-white dark:bg-gray-900 tt h-max">
+  <p></p>
 
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-    
+    <form method="POST" action="/post/search">
+      <input type="search" name="searchTerm"  class=" mb-5  md:hidden input border-black  input-bordered mr-2" placeholder="Search review" aria-label="Search">
+    </form>
      
 
     <h1 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white"> Recently got your Hair or Makeup done? <span class="font-bold"></span></h1>
@@ -43,7 +48,7 @@
         </div>
 
         <div> 
-          <label for="imgUpload" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">images:</label>
+          <label for="imgUpload" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">image:</label>
           <input type="file" id="imageUpload" name="file" placeholder="City,State"  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
         </div>
 
@@ -58,6 +63,4 @@
 
 </section>
 
-
-
-
+ 

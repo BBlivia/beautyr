@@ -80,14 +80,15 @@
         </button> 
         <span class="inline"> <%= posts[i].likes %></span>
         
-        <span class="badge "><%= posts[i].location%></span>
+        <h3 class=""> <i class="fa-sharp fa-solid fa-location-dot"></i> <%= posts[i].location %>  </h3>
         
       
   
-      <div class="card-footer">
+      <div class="card-footer mt-5">
        
+        <a href="/post/<%= posts[i]._id%>"  class="focus-visible:ring-2 focus:outline-black focus-visible:ring-black border-2 border-black text-black p-2 rounded-lg  hover:bg-black hover:text-white w-56 text-center  ">View Review</a>
         
-        <a href="/post/<%= posts[i]._id%>" class="btn ">View Review</a>
+        
        
       </div>
   </div>

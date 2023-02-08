@@ -4,86 +4,109 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-    />
-    
+     
     <link  href="/style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
      
   <title>Document</title>
 </head>
 <body>
 
-  <div class="navbar bg-base-100">
-    <a href="/" class="btn btn-ghost normal-case text-xl">Beauty Review</a>
+  <div class=" bg-red-50">
+    <header>
+      <div class="relative z-20 border-b bg-white">
+          <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-4">
+            <div class="flex items-center justify-between">
+              <div class="p-3">
+               <button class="hover:bg-blue-white  text-2xl"> <a href="/">Beauty Review</a></button> 
+              </div>
+  
+              <div class="flex items-center justify-end border-l lg:border-l-0">
+                <input type="checkbox" name="hamburger" id="hamburger" class="peer" hidden>
+                <label for="hamburger" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
+                  <div aria-hidden="true" class="m-auto h-0.5 w-6 rounded bg-sky-900 transition duration-300"></div>
+                  <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-6 rounded bg-sky-900 transition duration-300"></div>
+                </label>
+  
+                <div class=" peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-2.5rem)] translate-x-[-100%] bg-white border-r shadow-xl transition duration-300 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0">
+                  <div class="flex flex-col h-5 justify-between lg:items-center lg:flex-row">
+                    <ul class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
+                      
+                      <li> <a class="hover:text-blue-300 text-lg" href="/login">Login</a></li>
+                    </ul>
+                    <img class="md:hidden mt-10" src="https://via.placeholder.com/400" alt="">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </header>
   </div>
 
-  <main class="hero min-h-screen bg-base-200">
-    <div class="row justify-content-center">
 
-      <h1 class="fw-bold text-center">Hello! Welcome to Beauty Review </h1>
-      
-
-
-      <section>
-        <% if (locals.messages.errors) { %>
-            <% messages.errors.forEach( el => { %>
-                <div class="alert alert-danger"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
-        <% if (locals.messages.info) { %>
-            <% messages.info.forEach( el => { %>
-                <div class="alert alert-info"><%= el.msg %></div>
-            <% }) %>    
-        <% } %>
+  <section class="flex justify-center -mb-10  items-center bg-gray-300 h-screen">
+  <div class="sm:w-3/4 md:w-1/2 p-6 shadow-lg bg-white rounded-md" >
+    <h1 class="text-3xl block text-center font-semibold "><i class="fa-solid fa-user "></i> Register</h1>
+    <hr class="mt-3">
+    <section>
+      <% if (locals.messages.errors) { %>
+          <% messages.errors.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
+      <% if (locals.messages.info) { %>
+          <% messages.info.forEach( el => { %>
+              <div class="alert alert-info"><%= el.msg %></div>
+          <% }) %>    
+      <% } %>
 
 
 
 
-    <form  action="/signup" method="POST">
-      <div class="mb-6">
-        <label for="userName" class="block mb-2 text-sm font-medium text-black-900 dark:text-black-300">User Name</label>
-        <input type="text" class="shadow-sm bg-white-50 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-white-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@email.com" required="" id="userName" name="userName">
-      </div>
-      <div class="mb-6">
-        <label for="exampleInputEmail1" class="block mb-2 text-sm font-medium text-black-900 dark:text-black-300">Your email</label>
-        <input type="email"  id="exampleInputEmail1"  name="email" class="shadow-sm bg-white-50 border border-gray-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-white-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@email.com" required="">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div>
+       <form  action="/signup" method="POST">
 
-      <div class="mb-6">
-        <label for="password"class="block mb-2 text-sm font-medium text-black-900 dark:text-black-300"> Password</label>
-        <input type="password" id="password" name="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-black-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="password"  required="">
-      </div>
-      <div class="mb-6">
-        <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black-300" id="confirmPassword" name="confirmPassword">Confirm password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword"    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black-700 dark:border-gray-600 dark:placeholder-white-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="password"  required="">
-      </div>
-      <div class="flex items-start mb-6">
-        <div class="flex items-center h-5">
-          <input id="terms" type="checkbox" value="" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required="">
+        <div class="mt-3">
+          <label for="userName" class="text-base block mb-2" >User name</label>
+          <input type="text" placeholder="enter user name" id="userName" name="userName" class=" focus:outline-black   shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5  focus:outline-double focus:right-2 focus:border-black">
+        </div> 
+
+        <div class="mt-3">
+          <label for="userName" class="text-base block mb-2" >Email</label>
+          <input placeholder="enter email" type="email"  id="email" name="email" class=" focus:outline-black   shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5  focus:outline-double focus:right-2 focus:border-black">
         </div>
-        <label for="terms" class="ml-2 text-sm font-medium text-black-900 dark:text-black-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
-      </div>
-    
-      <button type="submit" class="text-white the-button hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
-      <button type="submit" class="text-white the-button hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><a href="/login">Already Have an Account? Login!</a></button>
-    </form>
-      </section>
-    </div>
-  </main>
 
+        <div class="mt-3">
+          <label for="password" class="text-base block mb-2" >Password</label>
+          <input placeholder="enter password" type="password" id="password" name="password" class=" focus:outline-black   shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5  focus:outline-double focus:right-2 focus:border-black">
+        </div>
+
+        <div class="mt-3">
+          <label for="confirmPassword" class="text-base block mb-2" >Password</label>
+          <input placeholder="confirm password"type="password" id="confirmPassword" name="confirmPassword" class=" focus:outline-black   shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5  focus:outline-double focus:right-2 focus:border-black">
+        </div>
+
+        <div class="mt-5 ">
+          <button type="submit" class="focus-visible:ring-2 focus:outline-black focus-visible:ring-black border-2 border-black text-black p-2 rounded-lg  hover:bg-black hover:text-white w-56 text-center  ">Login</button>
+        </div>
+       </form>
+    </section>
+  
+
+   
+  </div>
+  </section>
+  <footer class=" h-6 p-4 bg-white  shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 " >
+      
+    <span class=" mt-30 mx-auto max-w-screen-md text-sm text-black sm:text-center dark:text-gray-400">© 2022 <a href="#" class="hover:underline">Beauty Review™</a>. All Rights Reserved.</span>
+ 
+       
+ </footer>
+ 
+  
 </body>
+<html>
 
 
     

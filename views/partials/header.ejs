@@ -5,28 +5,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Binary Upload Boom</title>
+    <title>Beauty Review</title>
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/imgs/favicon-32x32.png"
+      href="/imgs/"
     />
 
     
     <link  href="/style.css" type="text/css" rel="stylesheet" />
-     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
+  
   <body >
-    <div class="navbar  justify-between bg-blue">
+<!--
+    <div class="navbar justify-between ">
       <div class="flex-1 ml-1.5">
-        <a class="btn btn-ghost  normal-case text-xl" href="/profile">Beauty Review</a>
+        <a class="text-md btn btn-ghost normal-case md:text-xl" href="/profile">Beauty Review</a>
       </div>
       
       <div class="gap-3 ml-2.5">
         <div class="form-control">
           <form method="POST" action="/post/search">
-            <input type="search" name="searchTerm"  class="input input-bordered mr-2" placeholder="Search review" aria-label="Search">
+            <input type="search" name="searchTerm"  class="hidden md:flex input input-bordered mr-2" placeholder="Search review" aria-label="Search">
           </form>
         
         </div>
@@ -49,8 +51,54 @@
       
   
    
-    
+  -->
 
+
+
+<div class=" font-sans bg-red-50">
+  <header>
+    <div class="relative z-20 border-b bg-white">
+        <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-4">
+          <div class="flex items-center justify-between">
+            <div class="p-3">
+              <button class=" text-2xl"> <a class="hover:text-orange-600" href="/feed">Beauty Review</a></button> 
+            </div>
+
+            <div class="flex items-center justify-end border-l lg:border-l-0">
+              <input type="checkbox" name="hamburger" id="hamburger" class="peer" hidden>
+              <label for="hamburger" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
+                <div aria-hidden="true" class="m-auto h-0.5 w-6 rounded bg-sky-900 transition duration-300"></div>
+                <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-6 rounded bg-sky-900 transition duration-300"></div>
+              </label>
+              
+
+              <div class=" peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-2.5rem)] translate-x-[-100%] bg-white border-r shadow-xl transition duration-300 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0">
+               
+                <div class="flex flex-col h-5 justify-between lg:items-center lg:flex-row">
+
+                  <div class="form-control">
+                    <form method="POST" action="/post/search">
+                      <input type="search" name="searchTerm"  class="hidden   md:flex input border-black  input-bordered mr-2" placeholder="Search review" aria-label="Search">
+                    </form>
+                  
+                  </div>
+                  <ul class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
+                    <li>
+                     
+                    </li>
+                    <li><a class="hover:text-blue-300 add-review text-lg" href="/profile">Add Review</a></li>
+                    <li><a class="hover:text-blue-300 md:hidden text-lg" href="/profile">Add /Search Review</a></li>
+                    <li> <a class="hover:text-blue-300 text-lg" href="/logout">Logout</a></li>
+                  </ul>
+                  <img class="md:hidden mt-10" src="/imgs/front.jpeg" alt="">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </header>
     
 </body>
 </html>

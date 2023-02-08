@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment"); //loading comment model
-const User = require("../models/User")
+const UserSchema = require("../models/User")
 const { response, request } = require("express");
 const { ObjectID } = require("mongodb");
 const { post } = require("../routes/comments");
@@ -30,23 +30,39 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean()
+      console.log(posts)
       var users = []
       for(i in posts){
-        var user = await User.findById(posts[i].user)
+        var user = await UserSchema.findById(posts[i].user)
         users.push(user.userName)
-       console.log(users)
-      }
-      res.render("feed.ejs", { posts: posts, userName: users,user: req.user });
+       
+
+       
+
+     
+    }
+      res.render("feed.ejs", { posts: posts, name:users, user: req.user });
     } catch (err) {
       console.log(err);
     }
   },
+
+
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id)
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
      
-      res.render("post.ejs", { post: post, user: req.user, comments: comments });
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean()
+      console.log(posts)
+      var users = []
+      for(i in posts){
+        var user = await UserSchema.findById(posts[i].user)
+        users.push(user.userName)
+        console.log(users)
+      }
+
+      res.render("post.ejs", { post: post, posts:posts, user: req.user, comments: comments, userName: users });
      
     } catch (err) {
       console.log(err);
@@ -67,11 +83,13 @@ module.exports = {
         location:req.body.location,
         likes: 0,
         user: req.user.id,
-       //user: postUser
+        createdBy: postUser.userName
+      
       });
     
       console.log("Post has been added!");
-      res.redirect("/profile");
+     
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
