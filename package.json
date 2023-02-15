@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "go": "nodemon server.js",
     "watch": "postcss  ./public/src/style.css -o ./public/style.css --watch",
     "build-css": "tailwind -i  ./public/src/style.css -o ./public/style.css"
   },

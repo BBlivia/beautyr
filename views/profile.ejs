@@ -4,12 +4,12 @@
 <p ><strong>Welcome</strong>: <%= user.userName.toUpperCase() %></p>
 
 
-<section class="bg-white dark:bg-gray-900 tt h-max">
-  <p></p>
+<section class="bg-white">
+  
 
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
     <form method="POST" action="/post/search">
-      <input type="search" name="searchTerm"  class=" mb-5  md:hidden input border-black  input-bordered mr-2" placeholder="Search review" aria-label="Search">
+      <input type="search" name="searchTerm"  class=" mb-5  md:hidden input   input-bordered mr-2 shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black" placeholder="Search review" aria-label="Search">
     </form>
      
 
@@ -25,12 +25,12 @@
       <form action="/post/createPost" enctype="multipart/form-data" method="POST" class="space-y-8  w-full">
         <div>
           <label for="serviceProvider" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Title</label>
-          <input name="serviceProvider" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="title" required>
+          <input name="serviceProvider" class="shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black" placeholder="title" required>
         </div>
        
         <div> 
           <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name of Provider:</label>
-           <input type="text" id="title" name="title" placeholder="IG Name"  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+           <input type="text" id="title" name="title" placeholder="IG Name"  class="shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black"  required>
         </div>
 
         <div>
@@ -44,23 +44,24 @@
 
         <div> 
           <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Location:</label>
-          <input type="text" id="location" name="location" placeholder="City,State"  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+          <input type="text" id="location" name="location" placeholder="City,State"  class="shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black" required>
         </div>
 
         <div> 
-          <label for="imgUpload" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">image:</label>
-          <input type="file" id="imageUpload" name="file" placeholder="City,State"  class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+          <label for="imgUpload" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Image:</label>
+          <input type="file" id="imageUpload" name="file" placeholder="City,State" class="shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black" required>
         </div>
 
         <div>
           <label for="caption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Experience:</label> 
-          <textarea type="text" name="caption" id="caption" rows="6" placeholder="tell us about your experience!" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required></textarea>
+          <textarea type="text" name="caption" id="caption" rows="6" placeholder="tell us about your experience!"  class="shadow-sm rounded-lg border-2 border-black w-full text-base p-2.5 focus:outline-black focus:right-2 focus:border-black" required></textarea>
         </div>
-        <button type="submit" value="Upload" class=" cursor-pointer  px py-3 px-5 text-sm font-medium text-center text-black rounded-lg bg-primary-700 sm:w-fit hover:--tw-scale-y: 1 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Add Review!</button>
+        <button type="submit" value="Upload" class=" cursor-pointer  focus-visible:ring-2 focus:outline-black focus-visible:ring-black border-2 border-black text-black p-2 rounded-lg  hover:bg-black hover:text-white w-56 text-center ">Add Review!</button>
       </form>
      </div>
   </div>
 
 </section>
+<%- include('partials/footer') -%>
 
  

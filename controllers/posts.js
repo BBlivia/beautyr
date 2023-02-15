@@ -1,7 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment"); //loading comment model
-const UserSchema = require("../models/User")
+const User = require("../models/User")
 const { response, request } = require("express");
 const { ObjectID } = require("mongodb");
 const { post } = require("../routes/comments");
@@ -30,10 +30,10 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean()
-      console.log(posts)
+      
       var users = []
       for(i in posts){
-        var user = await UserSchema.findById(posts[i].user)
+        var user = await User.findById(posts[i].user)
         users.push(user.userName)
        
 
@@ -57,9 +57,9 @@ module.exports = {
       console.log(posts)
       var users = []
       for(i in posts){
-        var user = await UserSchema.findById(posts[i].user)
+        var user = await User.findById(posts[i].user)
         users.push(user.userName)
-        console.log(users)
+      
       }
 
       res.render("post.ejs", { post: post, posts:posts, user: req.user, comments: comments, userName: users });

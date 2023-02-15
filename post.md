@@ -1,0 +1,226 @@
+<%- include('partials/header') -%>
+
+
+
+
+<!-- <div class="sm:w-1/2 md:w-1/2 p-6 mx-auto shadow-lgrounded-md">-->
+
+
+
+
+
+
+
+
+<div class="font-sans leading-none bg-grey-lighter mb-8">
+   <div class="flex justify-center  items-center overflow-hidden bg-slate-100 h-3/5"> 
+  
+    <div class="sm:w-12 md:w-40 p-6 mx-auto shadow-lgrounded-md">
+      
+      <div class="border-5 border-red-800  shadow m-4 p-3 pb-0 ">
+          <div class="flex items-center">
+              <div class="">
+                  <img alt="" class="w-10 h-10 rounded-full"    src="/imgs/background.jpeg" />
+                  </img>
+              </div>
+              <div class="ml-2">
+                  
+                  <p class="text-xs font-normal text-grey mt-1">
+                    
+                      <span class="cursor-pointer hover:underline">
+                        
+
+                        <span><%=user.userName%> </span>
+                      </span>
+                      
+                      
+                  </p>
+              </div>
+          </div>
+         
+          <h3 class="text-md font-normal my-3">
+            <%= post.serviceProvider %> 
+              <span class="text-red text-lg">
+                <h3 class=""> <i class="fa-sharp fa-solid fa-location-dot"></i> <%= post.location %>  </h3>
+              </span>
+          </h3>
+          <div class="border h-1/5">
+            <img class="w-full " src="<%= post.image%>" />
+          </div>
+          <div class="flex py-1 border-b-2">
+            <form
+         
+            action="/post/likePost/<%= post.id %>?_method=PUT"
+            method="POST"
+            >
+          
+              <button type="submit" class="appearance-none flex-1 flex items-center justify-center py-2 text-center text-red hover:bg-grey-lighter"> 
+                  <?xml version="1.0" encoding="iso-8859-1"?>
+                  
+                  <svg class="w-4 h-4 mr-1" id="Layer_1" style="enable-background:new 0 0 496.158 496.158;" version="1.1" viewbox="0 0 496.158 496.158" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+                      <path d="M0,248.085C0,111.063,111.069,0.003,248.075,0.003c137.013,0,248.083,111.061,248.083,248.082
+                        c0,137.002-111.07,248.07-248.083,248.07C111.069,496.155,0,385.087,0,248.085z" style="fill:#E04F5F;">
+                                              </path>
+                                              <path d="M374.116,155.145c-34.799-34.8-91.223-34.8-126.022,0h-0.029c-34.801-34.8-91.224-34.8-126.023,0
+                        c-34.801,34.8-29.783,86.842,0,126.022c31.541,41.491,89.129,109.944,126.023,109.944h0.029c36.895,0,94.481-68.453,126.022-109.944
+                        C403.9,241.988,408.916,189.946,374.116,155.145z" style="fill:#FFFFFF;">
+                      </path>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                      </g>
+                  </svg>
+                  
+                  <%= post.likes %>
+              </button>
+            </form>
+              <button class="appearance-none flex-1 flex items-center justify-center py-2 text-center text-grey-darker hover:bg-grey-lighter">
+                  <?xml version="1.0" encoding="utf-8"?>
+                  <svg class="w-4 h-4 mr-1 hidden" viewbox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1792 896q0 174-120 321.5t-326 233-450 85.5q-70 0-145-8-198 175-460 242-49 14-114 22-17 2-30.5-9t-17.5-29v-1q-3-4-.5-12t2-10 4.5-9.5l6-9 7-8.5 8-9q7-8 31-34.5t34.5-38 31-39.5 32.5-51 27-59 26-76q-157-89-247.5-220t-90.5-281q0-130 71-248.5t191-204.5 286-136.5 348-50.5q244 0 450 85.5t326 233 120 321.5z">
+                      </path>
+                  </svg>
+               
+              </button>
+
+              <%if(post.user == user.id){ %>
+                <form
+                      action="/post/deletePost/<%= post.id %>?_method=DELETE"
+                      method="POST"
+                      class="col-3 "
+                    >
+                    <div>
+                      <button type="submit" class="  fa fa-trash appearance-none flex-1 flex items-center justify-center py-2 text-center text-grey-darker hover:bg-grey-lighter">
+                       
+                    </button>
+                     
+                    </div>
+                   
+                    
+                  </form>
+                    <%}%>
+
+              
+          </div>
+
+          <div class="border-black border-2 w-full ml-7">
+            <?xml version="1.0" encoding="iso-8859-1"?>
+            
+        </div>
+          
+          <form  action="/comment/createComment/<%=post._id%>" method="POST">
+                   
+          <div class="bg-grey-lighter flex flex-between py-3 -mx-3 p-2">
+            <label for="comment" ></label>
+           <span class="block-inline mt-2 font-sans font-bold"> <%= user.userName %> </span>
+              <textarea  type="text" id="comment" name="comment" placeholder="Write a comment..." class="appearance-none w-full mx-2 bg-grey-lighter rounded-full border bg-white h-8 px-2 pt-2 text-xs"></textarea>
+              <button type="submit"><i class="fa-solid fa-comment">+</i></button>
+            </div>
+           
+          </form>
+          
+
+      </div>
+
+
+      <div class="antialiased mx-auto max-w-screen-sm">
+        <h3 class="mb-4 text-lg font-semibold text-gray-900">Comments</h3>
+      
+        <div class="space-y-4 ">
+
+
+
+          <% for(var i=0; i<comments.length; i++) {%>
+          
+              <!--Add user attribution-->
+              
+            <form 
+                      action="/comment/likeComment/<%=post._id%>/<%= comments[i]._id %>?_method=PUT"
+                      method="POST"
+                      >
+              
+
+      
+              <div class="flex justify-between" >
+                <div class="flex-shrink-0 mr-3">
+                  <img class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" src="/imgs/background.jpeg" alt="">
+                </div>
+                <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                  <strong><%= comments[i].createdByUsername%></strong> <span class="text-xs text-gray-400"></span>
+               
+                  <p class="text-sm">
+                    <%= comments[i].comment%>
+                  </p>
+
+
+                  <div class="">
+                  <button type="submit" class="">
+                    <svg aria-label="Like" class="_ab6-" color="black" fill="black" height="12" role="img" viewBox="0 0 24 24" width="12"><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path>
+                    </svg>
+                  </button> 
+                 
+                </div>
+                <span> <%= comments[i].likes %></span>
+                </div>
+             
+          </form>
+         
+          <%if(comments[i].createdById == user.id){ %>
+            <form 
+         
+            action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
+            method="POST"
+            >
+            <div class="border-2 border-red-800 mr-2">
+              <button type="submit" class="  fa fa-trash">
+               
+            </button>
+             
+            </div>
+          </form>
+          <%}%>
+          
+         
+          <% } %>
+        </div>
+      </div>
+        </div>
+    
+      </div>
+   
+   
+
+  </div>
+  </div>
+
+
+<%- include('partials/footer') -%>
+
+
+
