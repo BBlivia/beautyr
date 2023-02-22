@@ -37,7 +37,7 @@ module.exports = {
         users.push(user.userName)
        
 
-       
+       console.log(users)
        
      
     }
