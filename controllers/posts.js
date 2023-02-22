@@ -38,7 +38,7 @@ module.exports = {
        
 
        
-
+       
      
     }
       res.render("feed.ejs", { posts: posts, name:users, user: req.user });
