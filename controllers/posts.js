@@ -55,6 +55,7 @@ module.exports = {
      
       const posts = await Post.find().sort({ createdAt: "desc" }).lean()
       console.log(posts)
+      
       var users = []
       for(i in posts){
         var user = await User.findById(posts[i].user)
@@ -88,6 +89,7 @@ module.exports = {
       });
     
       console.log("Post has been added!");
+      
      
       res.redirect("/feed");
     } catch (err) {
