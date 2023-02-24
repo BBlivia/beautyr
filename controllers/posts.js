@@ -37,7 +37,7 @@ module.exports = {
         users.push(user.userName)
        
 
-       console.log(users)
+       //console.log(users)
        
      
     }
@@ -54,16 +54,8 @@ module.exports = {
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
      
       const posts = await Post.find().sort({ createdAt: "desc" }).lean()
-      console.log(posts)
       
-      var users = []
-      for(i in posts){
-        var user = await User.findById(posts[i].user)
-        users.push(user.userName)
-      
-      }
-
-      res.render("post.ejs", { post: post, posts:posts, user: req.user, comments: comments, userName: users });
+      res.render("post.ejs", { post: post, posts:posts, user: req.user, comments: comments, });
      
     } catch (err) {
       console.log(err);
@@ -73,7 +65,7 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-      const postUser = await User.findById(req.user)
+      const indiv = await Post.find().populate('user').then()
       await Post.create({
         title: req.body.title,
         image: result.secure_url,
@@ -84,9 +76,14 @@ module.exports = {
         location:req.body.location,
         likes: 0,
         user: req.user.id,
-        createdBy: postUser.userName
+        createdBy: req.user.userName,
+        
+       
+       
       
       });
+
+      //console.log(indiv[0].user[0].userName)
     
       console.log("Post has been added!");
       
@@ -137,7 +134,7 @@ module.exports = {
           $inc: { likes: 1 },
         }
       );
-      console.log("Likes +1");
+      //console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);

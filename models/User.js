@@ -7,6 +7,8 @@ const UserSchema = new mongoose.Schema({    //add profile picture to user
   email: { type: String, unique: true },
   password: String,
   
+
+  
   
 });
 
